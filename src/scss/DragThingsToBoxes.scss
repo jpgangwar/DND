@@ -1,0 +1,73 @@
+.drag_things_to_boxes .component_box {
+    display: inline-block;
+}
+
+.drag_things_to_boxes .box {
+	border: 2px solid black;
+	border-radius: 4px;
+	width: 140px;
+	height: 276px;
+	margin: 10px 80px 0 0;
+	position: relative;
+}
+
+.drag_things_to_boxes .highlighted .box {
+	box-shadow: inset 0 0 4px #00f;
+}
+
+.drag_things_to_boxes{
+
+	h2{
+		text-align: center;
+	}
+	.things_to_drag{
+        text-align: center;
+	}
+
+	
+}
+
+.timer-count-box{
+	background: aquamarine;
+    width: 50px;
+    height: 50px;
+	border-radius: 50%;
+	
+	
+}
+
+#timer_counter{
+	position: absolute;
+    display: block;
+    left: 18px;
+    top: 86px;
+    color: red;
+}
+
+#popup_box { 
+    display:none; 
+    position:fixed;  
+    position:absolute;
+    height:500px;  
+    width:500px;  
+    background:red;  
+    left: 400px;
+    top: 50px;
+    z-index:100; 
+    margin-left: 25px;  
+
+    
+    border:2px;      
+    padding:15px;  
+    font-size:15px;  
+    -moz-box-shadow: 0 0 5px;
+    -webkit-box-shadow: 0 0 5px;
+    box-shadow: 0 0 5px;
+
+}
+
+.boxes{
+    text-align: center;
+}
+
+
