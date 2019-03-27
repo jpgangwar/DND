@@ -1,10 +1,49 @@
-.App {
-  text-align: center;
 
-  .start{
-    margin-top: 20px;
-    background: red;
-    padding: 10px 20px;
-    color: aliceblue;
-  }
+
+.bgImg{
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
 }
+.bgImg {
+  background-image: url("./img/BG.png");
+  height: 967px;
+}
+
+.caption{
+  background-image: url("./img/D&D.png");
+    position: fixed;
+    top: 299px;
+    left: 387px;
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 509px;
+    height: 413px;
+}
+
+.start-screen {
+  
+    text-align: center;
+    position: relative;
+    right: 0px;
+    font-weight: 600;
+    display: block;
+    top: 459px;
+}
+
+.startactivity-btn{
+  background: #fcd522;
+    border: none;
+    font-size: 30px;
+    /* padding-left: 30px; */
+    /* padding-right: 30px; */
+    padding: 8px 39px;
+    cursor: pointer;
+}
+
+
+    

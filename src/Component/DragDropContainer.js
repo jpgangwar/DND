@@ -110,7 +110,7 @@ class DragDropContainer extends React.Component {
 
   setCurrentTarget = (x, y) => {
     // drop the z-index to get this elem out of the way, figure out what we're dragging over, then reset the z index
-    this.dragElem.style.zIndex = -1;
+    this.dragElem.style.zIndex = 1;
     const target = document.elementFromPoint(x, y) || document.body;
     this.dragElem.style.zIndex = this.props.zIndex;
     // prevent it from selecting itself as the target
@@ -176,6 +176,7 @@ class DragDropContainer extends React.Component {
   };
 
   startDrag = (clickX, clickY) => {
+    // debugger
     document.addEventListener(`${this.props.targetKey}Dropped`, this.props.onDrop);
     const rect = this.containerElem.getBoundingClientRect();
     this.setState({
@@ -192,6 +193,9 @@ class DragDropContainer extends React.Component {
 
   // During Drag
   handleMouseMove = (e) => {
+    // debugger
+    console.log('zoomFactor', window.zoomFactor);
+    
     if (!this.props.noDragging) {
       e.preventDefault();
       if (this.state.clicked) {
@@ -231,11 +235,11 @@ class DragDropContainer extends React.Component {
       this.startScrolling(...offScreen)
     } else {
       this.stopScrolling();
-      if (!this.props.yOnly) { stateChanges.left = (this.state.leftOffset + x) - this.fixedOffsetLeft; }
-      if (!this.props.xOnly) { stateChanges.top = (this.state.topOffset + y) - this.fixedOffsetTop; }
+      if (!this.props.yOnly) { stateChanges.left = ((this.state.leftOffset + x) - this.fixedOffsetLeft - window.stageLeft)/window.zoomFactor; }
+      if (!this.props.xOnly) { stateChanges.top = ((this.state.topOffset + y) - this.fixedOffsetTop)/window.zoomFactor; }
     }
     this.setState(stateChanges);
-    this.props.onDrag(this.props.dragData, this.currentTarget, x, y);
+    // this.props.onDrag(this.props.dragData, this.currentTarget, x, y);
     
   };
 
@@ -295,6 +299,10 @@ class DragDropContainer extends React.Component {
       zIndex: this.props.zIndex,
       opacity: this.props.dragElemOpacity,
       display: this.state.dragging ? 'block' : 'none',
+      background: '#91e9ff',
+      padding: '14px 6px 15px 20px',
+      borderRadius: '22px',
+      width: '333px'
     };
 
     const ghost = (
@@ -306,6 +314,7 @@ class DragDropContainer extends React.Component {
     const containerStyles = { 
       position: displayMode === 'disappeared' ? 'absolute' : 'relative', 
       display: 'inline-block', 
+      width: '350px'
     };
 
     const sourceElemStyles = {
@@ -313,10 +322,25 @@ class DragDropContainer extends React.Component {
       visibility: displayMode === 'hidden' ? 'hidden' : 'inherit',
     };
 
+    const questionList = {
+      listStyle: 'none',
+      background: '#91e9ff',
+      padding: '14px 20px',
+      borderRadius: '22px'
+    }
+
+    const padding0 = {
+      padding:"0px"
+    }
+
     return (
       <div className="ddcontainer" style={containerStyles} ref={(c) => { this.containerElem = c; }}>
         <span className="ddcontainersource" style={sourceElemStyles} ref={(c) => { this.sourceElem = c; }}>
-          {content}
+          <ul style={padding0}>
+            <li style={questionList}>
+              <span>{content}</span>
+            </li>
+          </ul>
         </span>
         {ghost}
       </div>

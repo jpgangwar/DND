@@ -1,0 +1,50 @@
+.box{
+    background-image: url('../img/drag_area.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    // padding: 48px 0px;
+}
+
+.drag_things_to_boxes{
+    clear: both;
+    width: 100%;
+    height: 100%;
+}
+
+.drag_things_to_boxes .component_box {
+    display: inline-block;
+}
+
+.drag_things_to_boxes .box {
+    border-radius: 4px;
+    width: 169px;
+    height: 209px;
+    margin: 0px 23px 0px 18px;
+    position: relative;
+    z-index: 1;
+}
+
+.drag_things_to_boxes .highlighted .box {
+	box-shadow: inset 0 0 4px #00f;
+}
+
+.boxes{
+    position: absolute;
+    bottom: 0px;
+    left: 15px;
+}
+
+.boxes{
+    p{
+        position: absolute;
+        top: 85px;
+        left: 21px;
+        z-index: 9999;
+        font-size: 25px;
+        margin: 0;
+        color: #000;
+        font-family: Roboto bold;
+        font-weight: bold;
+    }
+}

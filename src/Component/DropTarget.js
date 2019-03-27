@@ -7,10 +7,19 @@ class DropTarget extends React.Component {
     super(props);
     this.elem = null;
     this.state = {
-      highlighted: false,
+      counter : 0
     };
+    console.log('component loaded')
+    
 
+      this.url = "http://streaming.tdiradio.com:8000/house.mp3";
+      this.audio = new Audio(this.url);
+      this.wrongUrl = "https://interactive-examples.mdn.mozilla.net/media/examples/t-rex-roar.mp3";
+      this.WrongAudio = new Audio(this.wrongUrl);
+
+      this.handleDrop = this.handleDrop.bind(this)
   }
+  
 
   componentDidMount() {
     // debugger
@@ -33,9 +42,13 @@ class DropTarget extends React.Component {
     return e;
   }
 
+ 
+
+  
   handleDrop = (e) => {
     // debugger
     // tell the drop source about the drop, then do the callback
+    
     const evt = this.createEvent(
       `${this.props.targetKey}Dropped`,
       {
@@ -44,29 +57,50 @@ class DropTarget extends React.Component {
         dropData: this.props.dropData,
       },
     );
+ 
     e.containerElem.dispatchEvent(evt);
-    this.props.onHit(e);
-    this.setState({highlighted: false})
-  }
+    let sIndex = this.props.index;
+    let arr = e.dragData['correctBox'];
+  
+    
+    let isCorrect = false;
+    
+    arr.map((item, index) => {
+      if (item === sIndex) {
+        isCorrect = true;
+        // this.setState({
+        //   counter: this.state.counter + 1
+        // })
+      }
+    })
+    
+    console.log(this.state.counter);
+    
+    if (this.props.dragLength === this.counter) {
+      
+    };
 
-  handleDragEnter = (e) => {
-    console.log('enter')
-    const _e = e;
-    this.props.highlightClassName && this.setState({highlighted: true})
-    this.props.onDragEnter(_e);
-  }
-
-  handleDragLeave = (e) => {
-    const _e = e;
-    this.props.highlightClassName && this.setState({highlighted: false})
-    this.props.onDragLeave(_e);
+    
+    if (isCorrect) {
+      this.props.onHit(e);
+      this.audio.play();
+      this.WrongAudio.pause();
+      setTimeout(() => {
+        this.audio.pause();
+      }, 1000);   
+    }else{
+      this.audio.pause();
+      this.WrongAudio.play();
+      setTimeout(() => {
+        this.WrongAudio.pause();
+      }, 1000); 
+    }
   }
 
 
   render() {
-    const classNames = 'droptarget ' +  (this.state.highlighted ? this.props.highlightClassName : '');
     return (
-      <span ref={(t) => { this.elem = t; }} className={classNames}>
+      <span ref={(t) => { this.elem = t; }} >
         {this.props.render ? this.props.render() : this.props.children}
       </span>
     );
@@ -76,7 +110,6 @@ class DropTarget extends React.Component {
 DropTarget.propTypes = {
   children: PropTypes.node,
   render: PropTypes.func,
-  highlightClassName: PropTypes.string,
 
   // needs to match the targetKey in the DragDropContainer -- matched via the enter/leave/drop event names, above
   targetKey: PropTypes.string,
@@ -97,7 +130,6 @@ DropTarget.defaultProps = {
   onDragLeave: () => {},
   onHit: () => () => {},
   dropData: {},
-  highlightClassName: 'highlighted',
   render: null,
 };
 

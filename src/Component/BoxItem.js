@@ -10,7 +10,7 @@ export default class BoxItem extends React.Component {
         <div className="box_item_component">
             <div className="outer">
               <div className="item">
-                {this.props.children}
+                {/* {this.props.children} */}
               </div> 
             </div>
         </div>

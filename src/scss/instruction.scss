@@ -1,0 +1,53 @@
+.result-container {
+    height: 960px;
+    width: 100%;
+    position: relative;
+    background: transparent;
+  }
+  
+  .result-counter{
+    background: #fff;
+    width: 95%;
+    padding: 0px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    display: table;
+    border-radius: 10px;
+    height: 90%;
+  }
+  
+  .gameInstraction h3{
+    text-align: center;
+    font-size: 45px;
+    // display: inline-block;
+    margin-bottom: 15px;
+    font-family: roboto bold;
+  }
+  
+  .redult-msg{
+    display: table-cell;
+    margin: 0 auto;
+    position: absolute;
+    top: 28%;
+    padding: 0px 235px;
+    line-height: 40px;
+  
+  }
+  
+  .instructions-list{
+    p{
+      text-align: center;
+      font-size: 25px;
+      font-family: roboto regular;
+      color: #000000;
+    }
+  }
+  
+  .btn-area{
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 55px;
+  }

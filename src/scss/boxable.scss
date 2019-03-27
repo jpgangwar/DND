@@ -1,0 +1,51 @@
+
+    .instruction-text-bg{
+        background-image: url('../img//label_01.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 30px 0px;
+        h2{
+            text-align: center;
+            margin: 0;
+            font-size: 30px;
+            color: #91432d;
+            font-family: Roboto bold;
+        }
+    }
+
+
+    .mark{
+        background-image: url('../img//mark.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 30px 0px;
+        width: 35px;
+        position: absolute;
+        right: 33px;
+        top: 16px;
+    }
+
+    .instrction-text{
+        text-align: center;
+        color: #000;
+        font-size: 45px;
+        font-weight: bold;
+        // margin-top: 100px;
+    }
+
+    .intstruction-text{
+        font-size: 29px;
+        text-align: center;
+        padding: 0 47px;
+    }
+
+    .btn-close{
+        font-size: 41px;
+        padding: 8px 39px;
+        cursor: pointer;
+        position: absolute;
+        right: -13px;
+        top: 4px;
+    }

@@ -1,14 +1,34 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.scss';
-import DragThingsToBoxes from './Component/DragThingsToBoxes';
+import Instrutions from './Component/instructionScreen';
 
 
-class App extends Component {
+class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {show: true}
+}
+
+showDragDrop = () => {
+  this.setState({show:false})
+}
+
   render() {
+    const { show } = this.state;
     return (
       <React.Fragment>
-        <div className="Drag-and-drop">
-          <DragThingsToBoxes/>
+        <div className="bgImg">
+        {show && 
+          <div className="caption">
+            <div className="containerArea start-screen">
+                <button className="startactivity-btn" onClick={this.showDragDrop}>Start</button>
+            </div>
+          </div>
+          }
+          {!show &&
+              <Instrutions/>
+            }
         </div>
       </React.Fragment>
     );
